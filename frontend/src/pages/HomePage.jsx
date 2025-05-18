@@ -55,7 +55,7 @@ const HomePage = () => {
   
   return (
     <div>
-      <div className="container mx-auto space-y-10">
+      <div className="container mx-auto space-y-10 px-4">
         <div className="flex justify-between">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Your Friends</h2>
           <Link to='/notifications' className='btn btn-outline btn-sm'>
