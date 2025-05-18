@@ -125,7 +125,7 @@ const HomePage = () => {
                           {getLanguageFlag(user.nativeLanguage)}
                           Native: {capitalize(user.nativeLanguage)}
                         </span>
-                        <span className="badge badge-secondary">
+                        <span className="badge badge-accent">
                           {getLanguageFlag(user.learningLanguage)}
                           Learning: {capitalize(user.learningLanguage)}
                         </span>
