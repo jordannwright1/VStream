@@ -75,7 +75,7 @@ const ChatPage = () => {
   if (loading || !chatClient || !channel) return <ChatLoader />;
 
   return (
-    <div className='h-[93vh] overflow-x-hidden'>
+    <div className='h-[93vh]'>
       <Chat client={chatClient}>
         <Channel channel={channel}>
           <div className="w-full max-w-screen px-4 sm:px-6 lg:px-8 mx-auto">
