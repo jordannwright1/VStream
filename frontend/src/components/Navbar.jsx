@@ -57,7 +57,7 @@ const Navbar = () => {
           <div className="flex flex-col items-center py-4 space-y-4">
             <a href="/" className='text-gray-400 hover:text-white' onClick={() => setIsMenuOpen(false)}>Home</a>
             <a href="/notifications" className='text-gray-400 hover:text-white' onClick={() => setIsMenuOpen(false)}>Notifications</a>
-            <a href="/friends" className='text-gray-400 hover:text-white' onClick={() => setIsMenuOpen(false)}>Friends</a>
+            {/* <a href="/friends" className='text-gray-400 hover:text-white' onClick={() => setIsMenuOpen(false)}>Friends</a> */}
           </div>
         </div>
           
