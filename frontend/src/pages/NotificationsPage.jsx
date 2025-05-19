@@ -3,6 +3,7 @@ import React from 'react'
 import { acceptFriendRequest, getFriendRequests } from '../lib/api';
 import { BellIcon, ClockIcon, UserCheckIcon, UsersIcon } from 'lucide-react';
 import NoNotificationsFound from '../components/NoNotificationsFound';
+import {formatDistanceToNow} from "date-fns"
 
 const NotificationsPage = () => {
   const queryClient = useQueryClient();
@@ -106,7 +107,7 @@ const NotificationsPage = () => {
                           </p>
                           <p className="text-xs flex items-center opacity-70">
                             <ClockIcon className="h-3 w-3 mr-1" />
-                            Recently
+                            {formatDistanceToNow(new Date(notification.createdAt), {addSuffix: true})}
                           </p>
                         </div>
                         <div className="badge badge-success">
