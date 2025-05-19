@@ -6,7 +6,7 @@ import { CheckCircleIcon, MapPinIcon, UserPlusIcon, UsersIcon } from 'lucide-rea
 import FriendCard, { getLanguageFlag } from '../components/FriendCard';
 import NoFriendsFound from '../components/NoFriendsFound';
 
-function capitalize(word) {
+export function capitalize(word) {
   return word[0].toUpperCase() + word.slice(1);
 }
 
@@ -91,7 +91,7 @@ const HomePage = () => {
             <span className="loading loading-spinner loading-lg" />
             </div>
           ) : recommendedUsers.length === 0 ? (
-            <div className="card">
+            <div className="card flex items-center mt-10">
               <h3 className="font-semibold">No Recommendations Available</h3>
             </div>
           ) : (
