@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import React from 'react'
-import { acceptFriendRequest, getFriendRequests } from '../lib/api';
-import { BellIcon, ClockIcon, UserCheckIcon, UsersIcon } from 'lucide-react';
+import { acceptFriendRequest, deleteNotification, getFriendRequests } from '../lib/api';
+import { BellIcon, ClockIcon, UserCheckIcon, UsersIcon, X } from 'lucide-react';
 import NoNotificationsFound from '../components/NoNotificationsFound';
 import {formatDistanceToNow} from "date-fns"
 
@@ -18,6 +18,13 @@ const NotificationsPage = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey: ['friendRequests']});
       queryClient.invalidateQueries({queryKey: ['friends']});
+    }
+  })
+
+  const {mutate:deleteNotificationMutation, isLoading:isDeleting} = useMutation({
+    mutationFn: deleteNotification,
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey: ["friendRequests"]})
     }
   })
 
@@ -110,10 +117,12 @@ const NotificationsPage = () => {
                             {formatDistanceToNow(new Date(notification.createdAt), {addSuffix: true})}
                           </p>
                         </div>
-                        <div className="badge badge-success">
-                          <UsersIcon className="h-3 w-3 mr-1" />
-                          New Friend
-                        </div>
+                          <button
+                          className='btn btn-outline btn-xs'
+                          onClick={() => deleteNotificationMutation(notification._id)}
+                          >
+                            x
+                          </button>
                       </div>
                     </div>
                   </div>

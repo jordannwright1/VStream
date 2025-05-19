@@ -134,3 +134,23 @@ export async function getOutgoingFriendRequests(req, res) {
     res.status(500).json({message: "Internal server error"});
   }
 }
+
+export async function deleteNotification(req, res) {
+  try {
+    const {id:notificationId} = req.params;
+    if (!notificationId) {
+      return res.status(400).json({ message: "Notification ID is required" });
+    }
+
+    const deletedRequest = await FriendRequest.findByIdAndDelete(notificationId);
+
+    if (!deletedRequest) {
+      return res.status(404).json({ message: "Notification not found" });
+    }
+
+    res.status(200).json({message: "Notification deleted successfully"})
+  } catch (error) {
+    console.log("There was an error deleting notification: ". error.message);
+    res.status(500).json({message: "Internal server error"});
+  }
+}
